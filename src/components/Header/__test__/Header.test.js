@@ -35,16 +35,14 @@ it("should render find by text", async () => {
 
 // QUERY BY
 
-it("should render find by", async () => {
-    render(<Header title="My Header" />);
-    const headingElement = await screen.findByText(/My Header/i);
-    expect(headingElement).toBeInTheDocument();
-  });
-  
+it("should render find by ID", async () => {
+  render(<Header title="My Header" />);
+  const headingElement = screen.queryByTestId(/dogs/i);
+  expect(headingElement).not.toBeInTheDocument();
+});
 
-  it("should render find by ID", async () => {
-    render(<Header title="My Header" />);
-    const headingElement =  screen.getByTestId('testing');
-    expect(headingElement).toBeInTheDocument();
-  });
-  
+it("should render get all by role", async () => {
+  render(<Header title="My Header" />);
+  const headingElements = screen.getAllByRole("heading");
+  expect(headingElements.length).toBe(2);
+});
