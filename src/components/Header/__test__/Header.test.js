@@ -6,3 +6,24 @@ it('should render same text passed into title prop', () => {
   const headingElement = screen.getByText(/My Header/i);
   expect(headingElement).toBeInTheDocument();
 });
+
+
+// it('should render same text passed into title props', () => {
+//     render(<Header title='My Header'/>);
+//     const headingElement = screen.getByRole('heading');
+//     expect(headingElement).toBeInTheDocument();
+//   });
+  
+
+  it('should render text passed into title props', () => {
+    render(<Header title='My Header'/>);
+    const headingElement = screen.getByRole('heading', {name: 'My Header'});
+    expect(headingElement).toBeInTheDocument();
+  });
+
+  it('should render text passed into title', () => {
+    render(<Header title='My Header'/>);
+    const headingElement = screen.getByTitle('heading');
+    expect(headingElement).toBeInTheDocument();
+  });
+  
