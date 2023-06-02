@@ -32,3 +32,19 @@ it("should render find by text", async () => {
   const headingElement = await screen.findByText(/My Header/i);
   expect(headingElement).toBeInTheDocument();
 });
+
+// QUERY BY
+
+it("should render find by", async () => {
+    render(<Header title="My Header" />);
+    const headingElement = await screen.findByText(/My Header/i);
+    expect(headingElement).toBeInTheDocument();
+  });
+  
+
+  it("should render find by ID", async () => {
+    render(<Header title="My Header" />);
+    const headingElement =  screen.getByTestId('testing');
+    expect(headingElement).toBeInTheDocument();
+  });
+  
